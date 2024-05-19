@@ -1,0 +1,18 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/script.rpy", line 10: init statement expects a non-empty block.
+    init:
+         ^
+
+File "game/script.rpy", line 12: image statement expects a non-empty block.
+    image background1:
+                      ^
+
+File "game/script.rpy", line 16: expected statement.
+    zoom 1.5
+          ^
+
+Ren'Py Version: Ren'Py 8.2.1.24030407
+Sun May 19 16:54:13 2024

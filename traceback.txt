@@ -1,0 +1,30 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/script.rpy", line 37, in script
+    centered narrator  "In the year 2150, humanity's attempt to escape a dying Earth led to the construction and launch of thousands of nuclear-powered spaceships. These vessels, meant to find a new home among the stars, inadvertently accelerated Earth's decline. Catastrophic failures during launches and the mass use of nuclear propulsion resulted in widespread radioactive contamination and environmental collapse. The world that remains, now known as Neo-Terra, is a nightmarish landscape where pollution and radiation have reached life-threatening levels."
+Exception: Say has image attributes ('narrator',), but there's no image tag associated with the speaking character.
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/script.rpy", line 37, in script
+    centered narrator  "In the year 2150, humanity's attempt to escape a dying Earth led to the construction and launch of thousands of nuclear-powered spaceships. These vessels, meant to find a new home among the stars, inadvertently accelerated Earth's decline. Catastrophic failures during launches and the mass use of nuclear propulsion resulted in widespread radioactive contamination and environmental collapse. The world that remains, now known as Neo-Terra, is a nightmarish landscape where pollution and radiation have reached life-threatening levels."
+  File "C:\Users\mehme\Downloads\School\Fundamentals of Computer Systems Design\renpy\renpy\ast.py", line 2557, in execute
+    Say.execute(self)
+  File "C:\Users\mehme\Downloads\School\Fundamentals of Computer Systems Design\renpy\renpy\ast.py", line 615, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "C:\Users\mehme\Downloads\School\Fundamentals of Computer Systems Design\renpy\renpy\exports.py", line 1493, in say
+    who(what, *args, **kwargs)
+  File "C:\Users\mehme\Downloads\School\Fundamentals of Computer Systems Design\renpy\renpy\character.py", line 1332, in __call__
+    old_attr_state = self.handle_say_attributes(False, interact)
+  File "C:\Users\mehme\Downloads\School\Fundamentals of Computer Systems Design\renpy\renpy\character.py", line 1151, in handle_say_attributes
+    if self.resolve_say_attributes(predicting, attrs):
+  File "C:\Users\mehme\Downloads\School\Fundamentals of Computer Systems Design\renpy\renpy\character.py", line 1077, in resolve_say_attributes
+    raise Exception("Say has image attributes %r, but there's no image tag associated with the speaking character." % (attrs,))
+Exception: Say has image attributes ('narrator',), but there's no image tag associated with the speaking character.
+
+Windows-10-10.0.22631 AMD64
+Ren'Py 8.2.1.24030407
+schoolProject 1.0
+Sun May 19 16:59:57 2024
