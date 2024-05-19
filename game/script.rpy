@@ -197,8 +197,8 @@ return
 
 
 
-
-
+label WinstonStage4:
+    
 
 #Main start point of the game
 label start:
