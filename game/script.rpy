@@ -200,7 +200,7 @@ return
 
 label WinstonStage2:
     
-    if winstonPoints >= 0:
+    if prevPoint == True:
         menu: 
             "Resourcefulness is a commendable trait. How do you mobilize the remnants of Neo-Terra's society to work towards common goals despite the odds stacked against us? ":
                 $ winstonPoints = winstonPoints+1
@@ -217,7 +217,7 @@ label WinstonStage2:
                 winstonText "There was a dispute over territory between two rival factions, both on the brink of open conflict. Through mediation and compromise, I helped them see the mutual benefit of cooperation, averting bloodshed and forging a lasting partnership."
                 
 
-    if winstonPoints >=0:
+    if prevPoint == True:
         menu:
             "My thoughts are that one of the main aspects for common survival - alliance-building - requires a delicate balance. Can you share a specific instance where your diplomatic skills turned a potential conflict into cooperation, showcasing your prowess as a leader?":
                 $ winstonPoints = winstonPoints+1
@@ -238,25 +238,6 @@ label WinstonStage2:
     winstonText "*Winston takes a deep breath in and with a loud sound spits a large oozy matter on the floor in front of him*. There is nothing as stupid as trying to motivate hungry stomachs with a lousy speech."
     winstonText "If you believe that high spirit can be built without enough resources in your warehouse and without skills to handle the matter when your options are limited, I doubt that we can work together, lad."
     jump WinstonStage3
-
-
-
-
-
-
-
-          
-
-
-
-
-              
-
-        
-
-
-
-
 
 label WinstonStage3:
     menu:
