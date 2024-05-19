@@ -4,6 +4,8 @@ define winstonText = Character("Winston Steel")
 define captain = Character("Captain") #thats us
 
 default winstonPoints = 0 #points for winston
+default villageResources = 100
+default villagePopulation = 100
 
 $ prevPoint = True #True for positive and False for negative
 
@@ -174,7 +176,8 @@ label WinstonStage1:
             "+2 Good question, open question"
 
             winstonText "Survival! That's the only thing that matters! We must gather enough resources and hold on to them. We must ration them if we don't have enough. We must guarantee that we have food to feed our people. I was good at it, pal."
-            jump WinstonStage2
+            #jump WinstonStage2
+            jump WinstonStage3
         
         "Winston. Your experience is invaluable to us all. I am sure that you will agree that among other important traits for a leader adaptability seems to be crucial. In your tenure as an elder, what challenges have you faced where this trait proved indispensable? ":
             $ winstonPoints =  winstonPoints + 1
@@ -191,7 +194,7 @@ label WinstonStage1:
 
             winstonText "Listen kid, I think you are not feeling ground under your feet. I was not looking forward for this. I dont want any of this. But at the same time I don’t think that you have what it takes. People asked me, but I am still not sure that I am willing…..and you are not helping either."
 
-            jump WinstonStage2
+            jump WinstonStage3
 
 return
 
@@ -255,7 +258,58 @@ label WinstonStage2:
 
 
 
+label WinstonStage3:
+    menu:
+        "Unity amidst adversity, a powerful force indeed. In your leadership role, what strategies have you employed to foster this sense of unity among the disparate factions and survivors? " if prevPoint == True:
+            $ winstonPoints = winstonPoints + 2
+            $ prevPoint = True
+            "+2 Good question, open question"
+            winstonText "Diplomacy, negotiation, and occasionally, a show of strength when necessary. By finding common ground and emphasizing our shared humanity, I've been able to bridge divides and forge alliances."
 
+        "I apologize for my question. You are definitely right, in the current condition we must ensure the bare minimum if we hope to survive. In your leadership role, what strategies have you employed to foster this sense of unity among the disparate factions and survivors? " if prevPoint == False:
+            $ winstonPoints = winstonPoints + 3
+            $ prevPoint = True
+            "+3 Good question, open question"
+
+            winstonText "Diplomacy, negotiation, and occasionally, a show of strength when necessary. By finding common ground and emphasizing our shared humanity, I've been able to bridge divides and forge alliances."
+
+    menu:
+        "Your ability to defuse tensions is admirable. In the face of external threats like mutant raids or environmental catastrophes, how do you inspire confidence and maintain order among the populace?" if prevPoint == True:
+            $ winstonPoints = winstonPoints + 1
+            $ prevPoint = True
+            "+1 Good question, open question"
+            winstonText "Diplomacy, negotiation, and occasionally, a show of strength when necessary. By finding common ground and emphasizing our shared humanity, I've been able to bridge divides and forge alliances."
+
+        "My bad, truly. I am sorry for that question. As I heard from people your ability to defuse tensions is admirable. In the face of external threats like mutant raids or environmental catastrophes, how do you inspire confidence and maintain order among the populace? " if prevPoint == False:
+            $ winstonPoints = winstonPoints + 1
+            $ prevPoint = True
+            "+1 Good question, open question"
+            winstonText "Diplomacy, negotiation, and occasionally, a show of strength when necessary. By finding common ground and emphasizing our shared humanity, I've been able to bridge divides and forge alliances."
+
+    menu:
+        "I am confident and agree that food provision is important, but we are not mindless creatures. I still believe that faith and our trust in each other is what really matters. What are your thoughts on this? " if prevPoint == True:
+            $ winstonPoints = winstonPoints - 2
+            $ prevPoint = True
+            "+2 Medium question, open question"
+            winstonText "Diplomacy, negotiation, and occasionally, a show of strength when necessary. By finding common ground and emphasizing our shared humanity, I've been able to bridge divides and forge alliances."
+
+        "Anyway. Feeding is important, but we are not animals. I still believe that faith and our trust in each other is what is really important. What are your thoughts on this? " if prevPoint == False:
+            $ winstonPoints = winstonPoints - 5
+            $ prevPoint = True
+            "-5 Bad question, open question"
+            winstonText "Diplomacy, negotiation, and occasionally, a show of strength when necessary. By finding common ground and emphasizing our shared humanity, I've been able to bridge divides and forge alliances."
+
+    if winstonPoints <= -5:
+        winstonText "Looking at you and listening to you makes me wonder if we ARE planning to survive after all. But i guess I will not be here to see this happening. Goodbye, young fella, I wish your best in your future endeavors, but I am planning to head north and trust my word: there are those that are going to follow me.<Winstons walks out of the door, with a loud spit on the flour>"
+        $ villagePopulation -= 25
+        $ villageResources -= 50
+        "You lost a candidate, 25 people from population, and 50 resources."
+    elif winstonPoints > -5:
+        winstonText "Looking at you and listening to you makes me wonder if you possess the right skills to lead our people. But i guess time will show this. Mind what you say. In my humble opinion no religion can serve a good purpose when basic needs of our people are not fulfilled."
+
+    jump WinstonStage4
+
+return
 
 
 
