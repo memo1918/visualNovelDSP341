@@ -114,10 +114,6 @@ label introduction:
     pause
     scene slide16
     pause
-
-
-
-
     return
 
 
@@ -176,8 +172,8 @@ label WinstonStage1:
             "+2 Good question, open question"
 
             winstonText "Survival! That's the only thing that matters! We must gather enough resources and hold on to them. We must ration them if we don't have enough. We must guarantee that we have food to feed our people. I was good at it, pal."
-            #jump WinstonStage2
-            jump WinstonStage3
+
+            jump WinstonStage2
         
         "Winston. Your experience is invaluable to us all. I am sure that you will agree that among other important traits for a leader adaptability seems to be crucial. In your tenure as an elder, what challenges have you faced where this trait proved indispensable? ":
             $ winstonPoints =  winstonPoints + 1
@@ -194,8 +190,7 @@ label WinstonStage1:
 
             winstonText "Listen kid, I think you are not feeling ground under your feet. I was not looking forward for this. I dont want any of this. But at the same time I don’t think that you have what it takes. People asked me, but I am still not sure that I am willing…..and you are not helping either."
 
-            jump WinstonStage3
-
+            jump WinstonStage2
 return
 
 label WinstonStage2:
@@ -235,22 +230,24 @@ label WinstonStage2:
                 
      
     captain "Maybe adaptability and resourcefulness is important, but I genuinely believe that keeping a high spirit is what brings us to our ultimate success. Don’t you think so?"
-    winstonText "*Winston takes a deep breath in and with a loud sound spits a large oozy matter on the floor in front of him*. There is nothing as stupid as trying to motivate hungry stomachs with a lousy speech."
+    "Winston takes a deep breath in and with a loud sound spits a large oozy matter on the floor in front of him."
+    winstonText  "There is nothing as stupid as trying to motivate hungry stomachs with a lousy speech."
     winstonText "If you believe that high spirit can be built without enough resources in your warehouse and without skills to handle the matter when your options are limited, I doubt that we can work together, lad."
     jump WinstonStage3
+return
 
 label WinstonStage3:
     menu:
         "Unity amidst adversity, a powerful force indeed. In your leadership role, what strategies have you employed to foster this sense of unity among the disparate factions and survivors? " if prevPoint == True:
             $ winstonPoints = winstonPoints + 2
             $ prevPoint = True
-            "+2 Good question, open question"
+            "+2 "
             winstonText "Diplomacy, negotiation, and occasionally, a show of strength when necessary. By finding common ground and emphasizing our shared humanity, I've been able to bridge divides and forge alliances."
 
         "I apologize for my question. You are definitely right, in the current condition we must ensure the bare minimum if we hope to survive. In your leadership role, what strategies have you employed to foster this sense of unity among the disparate factions and survivors? " if prevPoint == False:
             $ winstonPoints = winstonPoints + 3
             $ prevPoint = True
-            "+3 Good question, open question"
+            "+3 "
 
             winstonText "Diplomacy, negotiation, and occasionally, a show of strength when necessary. By finding common ground and emphasizing our shared humanity, I've been able to bridge divides and forge alliances."
 
@@ -258,46 +255,86 @@ label WinstonStage3:
         "Your ability to defuse tensions is admirable. In the face of external threats like mutant raids or environmental catastrophes, how do you inspire confidence and maintain order among the populace?" if prevPoint == True:
             $ winstonPoints = winstonPoints + 1
             $ prevPoint = True
-            "+1 Good question, open question"
+            "+1"
             winstonText "Diplomacy, negotiation, and occasionally, a show of strength when necessary. By finding common ground and emphasizing our shared humanity, I've been able to bridge divides and forge alliances."
 
         "My bad, truly. I am sorry for that question. As I heard from people your ability to defuse tensions is admirable. In the face of external threats like mutant raids or environmental catastrophes, how do you inspire confidence and maintain order among the populace? " if prevPoint == False:
             $ winstonPoints = winstonPoints + 1
             $ prevPoint = True
-            "+1 Good question, open question"
+            "+1 "
             winstonText "Diplomacy, negotiation, and occasionally, a show of strength when necessary. By finding common ground and emphasizing our shared humanity, I've been able to bridge divides and forge alliances."
 
     menu:
         "I am confident and agree that food provision is important, but we are not mindless creatures. I still believe that faith and our trust in each other is what really matters. What are your thoughts on this? " if prevPoint == True:
             $ winstonPoints = winstonPoints - 2
-            $ prevPoint = True
-            "+2 Medium question, open question"
+            $ prevPoint = False
+            "-2 "
             winstonText "Diplomacy, negotiation, and occasionally, a show of strength when necessary. By finding common ground and emphasizing our shared humanity, I've been able to bridge divides and forge alliances."
 
         "Anyway. Feeding is important, but we are not animals. I still believe that faith and our trust in each other is what is really important. What are your thoughts on this? " if prevPoint == False:
             $ winstonPoints = winstonPoints - 5
-            $ prevPoint = True
-            "-5 Bad question, open question"
+            $ prevPoint = False
+            "-5 "
             winstonText "Diplomacy, negotiation, and occasionally, a show of strength when necessary. By finding common ground and emphasizing our shared humanity, I've been able to bridge divides and forge alliances."
 
     if winstonPoints <= -5:
-        winstonText "Looking at you and listening to you makes me wonder if we ARE planning to survive after all. But i guess I will not be here to see this happening. Goodbye, young fella, I wish your best in your future endeavors, but I am planning to head north and trust my word: there are those that are going to follow me.<Winstons walks out of the door, with a loud spit on the flour>"
+        winstonText "Looking at you and listening to you makes me wonder if we ARE planning to survive after all. "
+        winstonText "But i guess I will not be here to see this happening. Goodbye, young fella, I wish your best in your future endeavors, but I am planning to head north and trust my word: there are those that are going to follow me."
+        "Winstons walks out of the door, with a loud spit on the flour"
         $ villagePopulation -= 25
         $ villageResources -= 50
         "You lost a candidate, 25 people from population, and 50 resources."
+        return
     elif winstonPoints > -5:
         winstonText "Looking at you and listening to you makes me wonder if you possess the right skills to lead our people. But i guess time will show this. Mind what you say. In my humble opinion no religion can serve a good purpose when basic needs of our people are not fulfilled."
 
     jump WinstonStage4
-
 return
 
+label WinstonStage4:
+    menu:
+        "I appreciate your honesty. I will definitely think about what you said. My another question will be about handling pressure here at Haven`s Rest. Resilience in the face of adversity - a quality much needed in our world. How do you personally cope with the constant pressure and hardships of leadership without succumbing to despair? " if prevPoint == False:
+            $ winstonPoints = winstonPoints + 2
+            $ prevPoint = True
+            "+2"
+            winstonText "It's about finding solace in the small victories, Captain. Whether it's salvaging a vital resource or witnessing the resilience of our people, I draw strength from these moments to keep pressing forward, no matter how dire the circumstances."
 
+        "Resilience in the face of adversity - a quality much needed in our world. How do you personally cope with the constant pressure and hardships of leadership without succumbing to despair? " if prevPoint == True:
+            $ winstonPoints = winstonPoints + 2
+            $ prevPoint = True
+            "+2 "
+
+            winstonText "It's about finding solace in the small victories, Captain. Whether it's salvaging a vital resource or witnessing the resilience of our people, I draw strength from these moments to keep pressing forward, no matter how dire the circumstances."
+
+    menu:
+        "Your dedication to the future of Neo-Terra is evident, Winston. Before we conclude, is there anything else you'd like to share about your strengths or aspirations for this land? " if prevPoint == True:
+            $ winstonPoints = winstonPoints + 2
+            $ prevPoint = True
+            "+2 "
+            winstonText "Only this, Captain - that no matter how bleak the outlook may seem, as long as there are leaders willing to stand tall and fight for what's right, there's always hope for a brighter tomorrow in Neo-Terra."
+
+        "I appreciate your honesty. I will definitely think about what you said. Your dedication to the future of Neo-Terra is evident, Winston. Before we conclude, is there anything else you'd like to share about your strengths or aspirations for this land?  " if prevPoint == False:
+            $ winstonPoints = winstonPoints + 2
+            $ prevPoint = True
+            "+2 "
+            winstonText "Only this, Captain - that no matter how bleak the outlook may seem, as long as there are leaders willing to stand tall and fight for what's right, there's always hope for a brighter tomorrow in Neo-Terra."
+
+    captain "Yeah Yeah, I hear you, old man. Let us agree to disagree. But overall - how bad are things around here. Do you think I can handle this with your help?"
+    
+    winstonText "….?????" 
+
+    "Winstons once again takes a deep breath in, but this time only exhales with a heavy sound. After a few seconds of silence he speaks"
+
+    winstonText "Listen, Cap, you don’t seem like a bad or evil person, but it takes more to lead people. Confidence in your own strengths and capabilities is invaluable. I appreciate that you are able to question your skills, but you must be strong. So my answer is - I hope yes, but this ain’t gonna be pretty…..kid."
+return
+    
 
 #Main start point of the game
 label start:
-    # jump introduction
-    jump chooseNPC
-
-
+    call introduction
+    #change this scene to interview background 
+    scene black
+    call chooseNPC
+    hide winston with dissolve
+    "End of demo. Thanks for playing!"
 return
