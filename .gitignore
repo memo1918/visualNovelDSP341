@@ -5,3 +5,4 @@ game/saves/*
 log.txt
 traceback.txt
 game/cache/*
+game/script.rpyc
