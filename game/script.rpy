@@ -116,7 +116,7 @@ label introduction:
     pause
     return
 
-
+#add the labels for other chars and add the jumps
 label chooseNPC:
     menu:
         "The Elder – Winston Steel":
@@ -163,8 +163,8 @@ label winstonInterview:
     jump WinstonStage1
 return
 
-
 label WinstonStage1:
+    # menu's are for options
     menu:
         "Winston, amidst the chaos of Neo-Terra, what would you say is your greatest asset that has enabled you to survive and thrive as an elder? ":
             $ winstonPoints = winstonPoints + 2
@@ -238,6 +238,8 @@ return
 
 label WinstonStage3:
     menu:
+        #there are if statments to check the previous question and give points accordingly
+        #they are at the end of each option string -------->>>>
         "Unity amidst adversity, a powerful force indeed. In your leadership role, what strategies have you employed to foster this sense of unity among the disparate factions and survivors? " if prevPoint == True:
             $ winstonPoints = winstonPoints + 2
             $ prevPoint = True
@@ -336,5 +338,6 @@ label start:
     scene black
     call chooseNPC
     hide winston with dissolve
+    
     "End of demo. Thanks for playing!"
 return
