@@ -174,7 +174,7 @@ label WinstonStage1:
             "+2 Good question, open question"
 
             winstonText "Survival! That's the only thing that matters! We must gather enough resources and hold on to them. We must ration them if we don't have enough. We must guarantee that we have food to feed our people. I was good at it, pal."
-            jump WinstonStage2
+            jump WinstonStage4
         
         "Winston. Your experience is invaluable to us all. I am sure that you will agree that among other important traits for a leader adaptability seems to be crucial. In your tenure as an elder, what challenges have you faced where this trait proved indispensable? ":
             $ winstonPoints =  winstonPoints + 1
@@ -196,8 +196,43 @@ label WinstonStage1:
 return
 
 
-
 label WinstonStage4:
+    menu:
+        "I appreciate your honesty. I will definitely think about what you said. My another question will be about handling pressure here at Haven`s Rest. Resilience in the face of adversity - a quality much needed in our world. How do you personally cope with the constant pressure and hardships of leadership without succumbing to despair? " if prevPoint == False:
+            $ winstonPoints = winstonPoints + 2
+            $ prevPoint = True
+            "+2"
+            winstonText "It's about finding solace in the small victories, Captain. Whether it's salvaging a vital resource or witnessing the resilience of our people, I draw strength from these moments to keep pressing forward, no matter how dire the circumstances."
+
+        "Resilience in the face of adversity - a quality much needed in our world. How do you personally cope with the constant pressure and hardships of leadership without succumbing to despair? " if prevPoint == True:
+            $ winstonPoints = winstonPoints + 2
+            $ prevPoint = True
+            "+2 "
+
+            winstonText "It's about finding solace in the small victories, Captain. Whether it's salvaging a vital resource or witnessing the resilience of our people, I draw strength from these moments to keep pressing forward, no matter how dire the circumstances."
+
+    menu:
+        "Your dedication to the future of Neo-Terra is evident, Winston. Before we conclude, is there anything else you'd like to share about your strengths or aspirations for this land? " if prevPoint == True:
+            $ winstonPoints = winstonPoints + 2
+            $ prevPoint = True
+            "+2 "
+            winstonText "Only this, Captain - that no matter how bleak the outlook may seem, as long as there are leaders willing to stand tall and fight for what's right, there's always hope for a brighter tomorrow in Neo-Terra."
+
+        "I appreciate your honesty. I will definitely think about what you said. Your dedication to the future of Neo-Terra is evident, Winston. Before we conclude, is there anything else you'd like to share about your strengths or aspirations for this land?  " if prevPoint == False:
+            $ winstonPoints = winstonPoints + 2
+            $ prevPoint = True
+            "+2 "
+            winstonText "Only this, Captain - that no matter how bleak the outlook may seem, as long as there are leaders willing to stand tall and fight for what's right, there's always hope for a brighter tomorrow in Neo-Terra."
+
+    captain "Yeah Yeah, I hear you, old man. Let us agree to disagree. But overall - how bad are things around here. Do you think I can handle this with your help?"
+    
+    winstonText "….?????" 
+
+    "Winstons once again takes a deep breath in, but this time only exhales with a heavy sound. After a few seconds of silence he speaks"
+
+    captain "Listen, Cap, you don’t seem like a bad or evil person, but it takes more to lead people. Confidence in your own strengths and capabilities is invaluable. I appreciate that you are able to question your skills, but you must be strong. So my answer is - I hope yes, but this ain’t gonna be pretty…..kid."
+
+return
     
 
 #Main start point of the game
@@ -205,5 +240,5 @@ label start:
     # jump introduction
     jump chooseNPC
 
-
+    "End of demo. Thanks for playing!"
 return
