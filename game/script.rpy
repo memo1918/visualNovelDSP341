@@ -204,19 +204,7 @@ label WinstonStage2:
                 $ prevPoint = True
                 "+1 point"
                 winstonText "It's about instilling a sense of purpose, Captain. Everyone here has felt the sting of loss, but by rallying them around a shared vision of rebuilding, we find strength in unity."
-                jump WinstonStage3
-
-            "My thoughts are that one of the main aspects for common survival - alliance-building - requires a delicate balance. Can you share a specific instance where your diplomatic skills turned a potential conflict into cooperation, showcasing your prowess as a leader?":
-                $ winstonPoints = winstonPoints+1
-                $ prevPoint = True
-                "+1 point"
-                winstonText "There was a dispute over territory between two rival factions, both on the brink of open conflict. Through mediation and compromise, I helped them see the mutual benefit of cooperation, averting bloodshed and forging a lasting partnership."
-                jump WinstonStage3 
-                
-            "Maybe adaptability and resourcefulness is important, but I genuinely believe that keeping a high spirit is what brings us to our ultimate success. Don’t you think so?":
-                winstonText "*Winston takes a deep breath in and with a loud sound spits a large oozy matter on the floor in front of him*. There is nothing as stupid as trying to motivate hungry stomachs with a lousy speech."
-                winstonText "If you believe that high spirit can be built without enough resources in your warehouse and without skills to handle the matter when your options are limited, I doubt that we can work together, lad."
-                jump WinstonStage3
+                       
     else:
         menu: 
             "Oh I see. I must have guessed myself. Let us proceed. Can you share a specific instance where your diplomatic skills turned a potential conflict into cooperation, showcasing your prowess as a leader?":
@@ -224,20 +212,43 @@ label WinstonStage2:
                 $ prevPoint = False
                 "+1 point"
                 winstonText "There was a dispute over territory between two rival factions, both on the brink of open conflict. Through mediation and compromise, I helped them see the mutual benefit of cooperation, averting bloodshed and forging a lasting partnership."
-                jump WinstonStage3
+                
 
+    if winstonPoints >=0:
+        menu:
+            "My thoughts are that one of the main aspects for common survival - alliance-building - requires a delicate balance. Can you share a specific instance where your diplomatic skills turned a potential conflict into cooperation, showcasing your prowess as a leader?":
+                $ winstonPoints = winstonPoints+1
+                $ prevPoint = True
+                "+1 point"
+                winstonText "There was a dispute over territory between two rival factions, both on the brink of open conflict. Through mediation and compromise, I helped them see the mutual benefit of cooperation, averting bloodshed and forging a lasting partnership."
+                
+    else:
+        menu:
             "I see. Allow me to ask something else. How do you mobilize the remnants of Neo-Terra's society to work towards common goals despite the odds stacked against us? ":
                 $ winstonPoints = winstonPoints+1
                 $ prevPoint = False
                 "+1 point"
                 winstonText "It's about instilling a sense of purpose, Captain. Everyone here has felt the sting of loss, but by rallying them around a shared vision of rebuilding, we find strength in unity."
-                jump WinstonStage3
+                
+     
+    captain "Maybe adaptability and resourcefulness is important, but I genuinely believe that keeping a high spirit is what brings us to our ultimate success. Don’t you think so?"
+    winstonText "*Winston takes a deep breath in and with a loud sound spits a large oozy matter on the floor in front of him*. There is nothing as stupid as trying to motivate hungry stomachs with a lousy speech."
+    winstonText "If you believe that high spirit can be built without enough resources in your warehouse and without skills to handle the matter when your options are limited, I doubt that we can work together, lad."
+    jump WinstonStage3
 
-            "Maybe adaptability and resourcefulness is important, but I genuinely believe that keeping a high spirit is what brings us to our ultimate success. Don’t you think so?":
-                winstonText "*Winston takes a deep breath in and with a loud sound spits a large oozy matter on the floor in front of him*. There is nothing as stupid as trying to motivate hungry stomachs with a lousy speech."
-                winstonText "If you believe that high spirit can be built without enough resources in your warehouse and without skills to handle the matter when your options are limited, I doubt that we can work together, lad."
-                jump WinstonStage3
-        
+
+
+
+
+
+
+          
+
+
+
+
+              
+
         
 
 
