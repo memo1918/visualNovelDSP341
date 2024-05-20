@@ -202,82 +202,128 @@ label WinstonStage2:
                 $ prevPoint = True
                 "+1 point"
                 winstonText "It's about instilling a sense of purpose, Captain. Everyone here has felt the sting of loss, but by rallying them around a shared vision of rebuilding, we find strength in unity."
-                       
-    else:
-        menu: 
-            "Oh I see. I must have guessed myself. Let us proceed. Can you share a specific instance where your diplomatic skills turned a potential conflict into cooperation, showcasing your prowess as a leader?":
-                $ winstonPoints = winstonPoints+1
-                $ prevPoint = False
-                "+1 point"
-                winstonText "There was a dispute over territory between two rival factions, both on the brink of open conflict. Through mediation and compromise, I helped them see the mutual benefit of cooperation, averting bloodshed and forging a lasting partnership."
-                
 
-    if prevPoint == True:
-        menu:
             "My thoughts are that one of the main aspects for common survival - alliance-building - requires a delicate balance. Can you share a specific instance where your diplomatic skills turned a potential conflict into cooperation, showcasing your prowess as a leader?":
                 $ winstonPoints = winstonPoints+1
                 $ prevPoint = True
                 "+1 point"
                 winstonText "There was a dispute over territory between two rival factions, both on the brink of open conflict. Through mediation and compromise, I helped them see the mutual benefit of cooperation, averting bloodshed and forging a lasting partnership."
                 
+
     else:
-        menu:
+        menu: 
+            "Oh I see. I must have guessed myself. Let us proceed. Can you share a specific instance where your diplomatic skills turned a potential conflict into cooperation, showcasing your prowess as a leader?":
+                $ winstonPoints = winstonPoints+1
+                $ prevPoint = True
+                "+1 point"
+                winstonText "There was a dispute over territory between two rival factions, both on the brink of open conflict. Through mediation and compromise, I helped them see the mutual benefit of cooperation, averting bloodshed and forging a lasting partnership."
+                
             "I see. Allow me to ask something else. How do you mobilize the remnants of Neo-Terra's society to work towards common goals despite the odds stacked against us? ":
                 $ winstonPoints = winstonPoints+1
-                $ prevPoint = False
+                $ prevPoint = True
                 "+1 point"
                 winstonText "It's about instilling a sense of purpose, Captain. Everyone here has felt the sting of loss, but by rallying them around a shared vision of rebuilding, we find strength in unity."
-                
-     
-    captain "Maybe adaptability and resourcefulness is important, but I genuinely believe that keeping a high spirit is what brings us to our ultimate success. Don’t you think so?"
-    "Winston takes a deep breath in and with a loud sound spits a large oozy matter on the floor in front of him."
-    winstonText  "There is nothing as stupid as trying to motivate hungry stomachs with a lousy speech."
-    winstonText "If you believe that high spirit can be built without enough resources in your warehouse and without skills to handle the matter when your options are limited, I doubt that we can work together, lad."
+
+            "Maybe adaptability and resourcefulness is important, but I genuinely believe that keeping a high spirit is what brings us to our ultimate success. Don’t you think so?":
+                $ prevPoint = False
+                "Winston takes a deep breath in and with a loud sound spits a large oozy matter on the floor in front of him."
+                winstonText  "There is nothing as stupid as trying to motivate hungry stomachs with a lousy speech."
+                winstonText "If you believe that high spirit can be built without enough resources in your warehouse and without skills to handle the matter when your options are limited, I doubt that we can work together, lad."
+
     jump WinstonStage3
 return
 
+
+# label WinstonStage2:
+    
+#     if prevPoint == True:
+#         menu: 
+#             "Resourcefulness is a commendable trait. How do you mobilize the remnants of Neo-Terra's society to work towards common goals despite the odds stacked against us? ":
+#                 $ winstonPoints = winstonPoints+1
+#                 $ prevPoint = True
+#                 "+1 point"
+#                 winstonText "It's about instilling a sense of purpose, Captain. Everyone here has felt the sting of loss, but by rallying them around a shared vision of rebuilding, we find strength in unity."
+                       
+#     else:
+#         menu: 
+#             "Oh I see. I must have guessed myself. Let us proceed. Can you share a specific instance where your diplomatic skills turned a potential conflict into cooperation, showcasing your prowess as a leader?":
+#                 $ winstonPoints = winstonPoints+1
+#                 $ prevPoint = False
+#                 "+1 point"
+#                 winstonText "There was a dispute over territory between two rival factions, both on the brink of open conflict. Through mediation and compromise, I helped them see the mutual benefit of cooperation, averting bloodshed and forging a lasting partnership."
+                
+
+#     if prevPoint == True:
+#         menu:
+#             "My thoughts are that one of the main aspects for common survival - alliance-building - requires a delicate balance. Can you share a specific instance where your diplomatic skills turned a potential conflict into cooperation, showcasing your prowess as a leader?":
+#                 $ winstonPoints = winstonPoints+1
+#                 $ prevPoint = True
+#                 "+1 point"
+#                 winstonText "There was a dispute over territory between two rival factions, both on the brink of open conflict. Through mediation and compromise, I helped them see the mutual benefit of cooperation, averting bloodshed and forging a lasting partnership."
+                
+#     else:
+#         menu:
+#             "I see. Allow me to ask something else. How do you mobilize the remnants of Neo-Terra's society to work towards common goals despite the odds stacked against us? ":
+#                 $ winstonPoints = winstonPoints+1
+#                 $ prevPoint = False
+#                 "+1 point"
+#                 winstonText "It's about instilling a sense of purpose, Captain. Everyone here has felt the sting of loss, but by rallying them around a shared vision of rebuilding, we find strength in unity."
+                
+     
+#     captain "Maybe adaptability and resourcefulness is important, but I genuinely believe that keeping a high spirit is what brings us to our ultimate success. Don’t you think so?"
+#     "Winston takes a deep breath in and with a loud sound spits a large oozy matter on the floor in front of him."
+#     winstonText  "There is nothing as stupid as trying to motivate hungry stomachs with a lousy speech."
+#     winstonText "If you believe that high spirit can be built without enough resources in your warehouse and without skills to handle the matter when your options are limited, I doubt that we can work together, lad."
+#     jump WinstonStage3
+# return
+
 label WinstonStage3:
-    menu:
-        #there are if statments to check the previous question and give points accordingly
-        #they are at the end of each option string -------->>>>
-        "Unity amidst adversity, a powerful force indeed. In your leadership role, what strategies have you employed to foster this sense of unity among the disparate factions and survivors? " if prevPoint == True:
-            $ winstonPoints = winstonPoints + 2
-            $ prevPoint = True
-            "+2 "
-            winstonText "Diplomacy, negotiation, and occasionally, a show of strength when necessary. By finding common ground and emphasizing our shared humanity, I've been able to bridge divides and forge alliances."
+    if prevPoint == True:
+        menu:
+            #there are if statments to check the previous question and give points accordingly
+            #they are at the end of each option string -------->>>>
+            "Unity amidst adversity, a powerful force indeed. In your leadership role, what strategies have you employed to foster this sense of unity among the disparate factions and survivors? ": 
+                $ winstonPoints = winstonPoints + 2
+                $ prevPoint = True
+                "+2 "
+                winstonText "Diplomacy, negotiation, and occasionally, a show of strength when necessary. By finding common ground and emphasizing our shared humanity, I've been able to bridge divides and forge alliances."
 
-        "I apologize for my question. You are definitely right, in the current condition we must ensure the bare minimum if we hope to survive. In your leadership role, what strategies have you employed to foster this sense of unity among the disparate factions and survivors? " if prevPoint == False:
-            $ winstonPoints = winstonPoints + 3
-            $ prevPoint = True
-            "+3 "
+            "Your ability to defuse tensions is admirable. In the face of external threats like mutant raids or environmental catastrophes, how do you inspire confidence and maintain order among the populace?" :
+                $ winstonPoints = winstonPoints + 1
+                $ prevPoint = True
+                "+1"
+                winstonText "Diplomacy, negotiation, and occasionally, a show of strength when necessary. By finding common ground and emphasizing our shared humanity, I've been able to bridge divides and forge alliances."
 
-            winstonText "Diplomacy, negotiation, and occasionally, a show of strength when necessary. By finding common ground and emphasizing our shared humanity, I've been able to bridge divides and forge alliances."
+            "I am confident and agree that food provision is important, but we are not mindless creatures. I still believe that faith and our trust in each other is what really matters. What are your thoughts on this? " :
+                $ winstonPoints = winstonPoints - 2
+                $ prevPoint = False
+                "-2 "
+                winstonText "Diplomacy, negotiation, and occasionally, a show of strength when necessary. By finding common ground and emphasizing our shared humanity, I've been able to bridge divides and forge alliances."
+    
+    else:
+        menu:
+                        
+            "I apologize for my question. You are definitely right, in the current condition we must ensure the bare minimum if we hope to survive. In your leadership role, what strategies have you employed to foster this sense of unity among the disparate factions and survivors? " :
+                $ winstonPoints = winstonPoints + 3
+                $ prevPoint = True
+                "+3 "
 
-    menu:
-        "Your ability to defuse tensions is admirable. In the face of external threats like mutant raids or environmental catastrophes, how do you inspire confidence and maintain order among the populace?" if prevPoint == True:
-            $ winstonPoints = winstonPoints + 1
-            $ prevPoint = True
-            "+1"
-            winstonText "Diplomacy, negotiation, and occasionally, a show of strength when necessary. By finding common ground and emphasizing our shared humanity, I've been able to bridge divides and forge alliances."
+                winstonText "Diplomacy, negotiation, and occasionally, a show of strength when necessary. By finding common ground and emphasizing our shared humanity, I've been able to bridge divides and forge alliances."
 
-        "My bad, truly. I am sorry for that question. As I heard from people your ability to defuse tensions is admirable. In the face of external threats like mutant raids or environmental catastrophes, how do you inspire confidence and maintain order among the populace? " if prevPoint == False:
-            $ winstonPoints = winstonPoints + 1
-            $ prevPoint = True
-            "+1 "
-            winstonText "Diplomacy, negotiation, and occasionally, a show of strength when necessary. By finding common ground and emphasizing our shared humanity, I've been able to bridge divides and forge alliances."
 
-    menu:
-        "I am confident and agree that food provision is important, but we are not mindless creatures. I still believe that faith and our trust in each other is what really matters. What are your thoughts on this? " if prevPoint == True:
-            $ winstonPoints = winstonPoints - 2
-            $ prevPoint = False
-            "-2 "
-            winstonText "Diplomacy, negotiation, and occasionally, a show of strength when necessary. By finding common ground and emphasizing our shared humanity, I've been able to bridge divides and forge alliances."
+            "My bad, truly. I am sorry for that question. As I heard from people your ability to defuse tensions is admirable. In the face of external threats like mutant raids or environmental catastrophes, how do you inspire confidence and maintain order among the populace? " :
+                $ winstonPoints = winstonPoints + 1
+                $ prevPoint = True
+                "+1 "
+                winstonText "Diplomacy, negotiation, and occasionally, a show of strength when necessary. By finding common ground and emphasizing our shared humanity, I've been able to bridge divides and forge alliances."
+            
+            "Anyway. Feeding is important, but we are not animals. I still believe that faith and our trust in each other is what is really important. What are your thoughts on this? " :
+                $ winstonPoints = winstonPoints - 5
+                $ prevPoint = False
+                "-5 "
+                winstonText "Diplomacy, negotiation, and occasionally, a show of strength when necessary. By finding common ground and emphasizing our shared humanity, I've been able to bridge divides and forge alliances."
 
-        "Anyway. Feeding is important, but we are not animals. I still believe that faith and our trust in each other is what is really important. What are your thoughts on this? " if prevPoint == False:
-            $ winstonPoints = winstonPoints - 5
-            $ prevPoint = False
-            "-5 "
-            winstonText "Diplomacy, negotiation, and occasionally, a show of strength when necessary. By finding common ground and emphasizing our shared humanity, I've been able to bridge divides and forge alliances."
+        
 
     if winstonPoints <= -5:
         winstonText "Looking at you and listening to you makes me wonder if we ARE planning to survive after all. "
@@ -294,40 +340,43 @@ label WinstonStage3:
 return
 
 label WinstonStage4:
-    menu:
-        "I appreciate your honesty. I will definitely think about what you said. My another question will be about handling pressure here at Haven`s Rest. Resilience in the face of adversity - a quality much needed in our world. How do you personally cope with the constant pressure and hardships of leadership without succumbing to despair? " if prevPoint == False:
-            $ winstonPoints = winstonPoints + 2
-            $ prevPoint = True
-            "+2"
-            winstonText "It's about finding solace in the small victories, Captain. Whether it's salvaging a vital resource or witnessing the resilience of our people, I draw strength from these moments to keep pressing forward, no matter how dire the circumstances."
 
-        "Resilience in the face of adversity - a quality much needed in our world. How do you personally cope with the constant pressure and hardships of leadership without succumbing to despair? " if prevPoint == True:
-            $ winstonPoints = winstonPoints + 2
-            $ prevPoint = True
-            "+2 "
+    if prevPoint == True:
+        menu:
+            
+            "Resilience in the face of adversity - a quality much needed in our world. How do you personally cope with the constant pressure and hardships of leadership without succumbing to despair? " :
+                $ winstonPoints = winstonPoints + 2
+                $ prevPoint = True
+                "+2 "
 
-            winstonText "It's about finding solace in the small victories, Captain. Whether it's salvaging a vital resource or witnessing the resilience of our people, I draw strength from these moments to keep pressing forward, no matter how dire the circumstances."
+                winstonText "It's about finding solace in the small victories, Captain. Whether it's salvaging a vital resource or witnessing the resilience of our people, I draw strength from these moments to keep pressing forward, no matter how dire the circumstances."
 
-    menu:
-        "Your dedication to the future of Neo-Terra is evident, Winston. Before we conclude, is there anything else you'd like to share about your strengths or aspirations for this land? " if prevPoint == True:
-            $ winstonPoints = winstonPoints + 2
-            $ prevPoint = True
-            "+2 "
-            winstonText "Only this, Captain - that no matter how bleak the outlook may seem, as long as there are leaders willing to stand tall and fight for what's right, there's always hope for a brighter tomorrow in Neo-Terra."
+            "Your dedication to the future of Neo-Terra is evident, Winston. Before we conclude, is there anything else you'd like to share about your strengths or aspirations for this land? " :
+                $ winstonPoints = winstonPoints + 2
+                $ prevPoint = True
+                "+2 "
+                winstonText "Only this, Captain - that no matter how bleak the outlook may seem, as long as there are leaders willing to stand tall and fight for what's right, there's always hope for a brighter tomorrow in Neo-Terra."
+    else:
+        menu:
+        
+            "I appreciate your honesty. I will definitely think about what you said. Your dedication to the future of Neo-Terra is evident, Winston. Before we conclude, is there anything else you'd like to share about your strengths or aspirations for this land?  " :
+                $ winstonPoints = winstonPoints + 2
+                $ prevPoint = True
+                "+2 "
+                winstonText "Only this, Captain - that no matter how bleak the outlook may seem, as long as there are leaders willing to stand tall and fight for what's right, there's always hope for a brighter tomorrow in Neo-Terra."
 
-        "I appreciate your honesty. I will definitely think about what you said. Your dedication to the future of Neo-Terra is evident, Winston. Before we conclude, is there anything else you'd like to share about your strengths or aspirations for this land?  " if prevPoint == False:
-            $ winstonPoints = winstonPoints + 2
-            $ prevPoint = True
-            "+2 "
-            winstonText "Only this, Captain - that no matter how bleak the outlook may seem, as long as there are leaders willing to stand tall and fight for what's right, there's always hope for a brighter tomorrow in Neo-Terra."
+            "I appreciate your honesty. I will definitely think about what you said. My another question will be about handling pressure here at Haven`s Rest. Resilience in the face of adversity - a quality much needed in our world. How do you personally cope with the constant pressure and hardships of leadership without succumbing to despair? " :
+                $ winstonPoints = winstonPoints + 2
+                $ prevPoint = True
+                "+2"
+                winstonText "It's about finding solace in the small victories, Captain. Whether it's salvaging a vital resource or witnessing the resilience of our people, I draw strength from these moments to keep pressing forward, no matter how dire the circumstances."
 
-    captain "Yeah Yeah, I hear you, old man. Let us agree to disagree. But overall - how bad are things around here. Do you think I can handle this with your help?"
+            "Yeah Yeah, I hear you, old man. Let us agree to disagree. But overall - how bad are things around here. Do you think I can handle this with your help?":
+                winstonText "….?????" 
+                "Winstons once again takes a deep breath in, but this time only exhales with a heavy sound. After a few seconds of silence he speaks"
+                winstonText "Listen, Cap, you don’t seem like a bad or evil person, but it takes more to lead people. Confidence in your own strengths and capabilities is invaluable. I appreciate that you are able to question your skills, but you must be strong. So my answer is - I hope yes, but this ain’t gonna be pretty…..kid."
+                $ prevPoint = False
     
-    winstonText "….?????" 
-
-    "Winstons once again takes a deep breath in, but this time only exhales with a heavy sound. After a few seconds of silence he speaks"
-
-    winstonText "Listen, Cap, you don’t seem like a bad or evil person, but it takes more to lead people. Confidence in your own strengths and capabilities is invaluable. I appreciate that you are able to question your skills, but you must be strong. So my answer is - I hope yes, but this ain’t gonna be pretty…..kid."
 return
     
 
