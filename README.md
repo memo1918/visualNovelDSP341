@@ -1,6 +1,9 @@
 # Visual Novel Game
 Development of a visual novel game for the course DSP341
 
+# Document with Script
+https://docs.google.com/document/d/1kCKq8ZUulN02gEIRBVtxPhjYeG9UbGX6/edit
+
 # It is implemented using Ren'Py game engine
 https://www.renpy.org/
 
